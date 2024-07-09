@@ -1,0 +1,24 @@
+import { Sequelize, Model } from 'sequelize';
+const sequelize = new Sequelize('mssql::memory:');
+
+class Technology extends Model {}
+
+Technology.init(
+  {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize, 
+    modelName: 'User', 
+  },
+);
+
+console.log(Technology === sequelize.models.User);
